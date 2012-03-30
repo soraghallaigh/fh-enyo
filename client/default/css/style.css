@@ -1,0 +1,107 @@
+.onyx-toolbar {
+	-webkit-box-shadow: 0px 1px 5px #000;
+	box-shadow: 0px 1px 5px #000;
+}
+.main-toolbar {
+	position: absolute;	
+	width: 100%;
+	z-index: 1000;
+}
+.nav-toolbar {
+	position: absolute;	
+	width: 100%;
+	z-index: 1000;
+	bottom: 0;
+}
+.feed-content {
+	top: 55px;
+	bottom: 0px;
+	position: absolute;
+	width: 100%;
+}
+.feed-item {
+	width: 100%;
+}
+.feed-item .title {
+	color: #eee;
+	font-size: 14px;
+	background-color: #4C4C4C;
+	border-bottom: 1px solid #3C3C3C;
+	border-top: 1px solid #5C5C5C;
+	padding: 6px 4px 6px 5px;
+}
+.feed-item .title.active,
+.feed-item .title:active {
+	border-top: 1px solid #3C3C3C;
+	border-bottom: 1px solid #5C5C5C;
+}
+.feed-item .description {
+	display: none;
+	overflow: hidden;
+	height: 0;
+	font-size: 13px;
+}
+.feed-item .description.open {
+	display: inline-block;
+	overflow: hidden;
+	height: auto;
+	padding: 5px;
+}
+.pullout .onyx-grabber {
+	position: absolute;
+	height: 54px;
+	width: 50px;
+	bottom: 50px;
+	left: -50px;
+	border-radius: 10px 0 0 10px;
+	background-color: #D8D8D8;
+}
+.feed-list {
+	height: 100%;
+	background-color: #D8D8D8;
+}
+.onyx-toolbar .onyx-input-decorator {
+	padding: 6px 8px 10px 8px !important;
+	width: 50%;
+}
+.onyx-groupbox > div {
+	padding: 6px 4px 6px 3px;
+	border-radius: none !important;
+	border: none;
+	border-bottom: 1px solid #B4B4B4;
+	border-top: 1px solid #F8F8F8;
+}
+.onyx-groupbox > div.active {
+	background-color: #aaa;
+}
+.loading-overlay {
+	left: 0;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	position: absolute;
+	z-index: 9999;
+	display: block;
+}
+.loading-overlay.active {
+	display: block;
+}
+.loading-overlay .enyo-rotating-image {
+	width: 128px;
+	height: 128px;
+	left: 50%;
+	top: 50%;
+	margin-left: -64px;
+	margin-top: -64px;
+}
+
+
+.enyo-rotating-image {
+	-webkit-animation-name: enyo-rotating-image-rotate;
+	-webkit-animation-iteration-count: infinite;
+	-webkit-animation-duration: 1s;
+	-webkit-animation-timing-function: linear;
+	overflow: hidden;
+	-webkit-background-origin: padding-box;
+	-webkit-background-clip: content-box;
+}
