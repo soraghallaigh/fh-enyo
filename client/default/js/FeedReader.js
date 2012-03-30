@@ -6,6 +6,7 @@ enyo.kind({
 	[
 		{
 			kind: "onyx.Toolbar",
+			classes: "main-toolbar",
 			components: [
 				{
 					tag: "img",
@@ -19,12 +20,21 @@ enyo.kind({
 			]
 		},
 		{
-			components: 
-			[
+			components: [
 				{
-					kind: "FeedList"
+					kind: "FeedList",
+					name: "feedList",
+					style: "z-index: 1000;"
+				},
+				{
+					kind: "FeedContent",
+					name: "content",
 				}
 			]
+		},
+		{
+			kind: "onyx.Toolbar",
+			classes: "nav-toolbar"
 		}
 	]
 });
