@@ -1,13 +1,16 @@
-	<title>FeedHenry FeedReader</title>
 
-	<link href="enyo/enyo.css" rel="stylesheet" type="text/css" />
-	<link href="css/style.css" rel="stylesheet" type="text/css" />
-	<script src="enyo/enyo.js" type="text/javascript"></script>
-	<script src="package.js" type="text/javascript"></script>
 
 
 <script type="text/javascript">
-	enyo.Scroller.touchScrolling = true;
-	var feedReader = new FeedReader();
-	feedReader.renderInto(document.body);
+
+	document.head.innerHTML += "<title>FeedHenry FeedReader</title>" +
+					'<link href="enyo/enyo.css" rel="stylesheet" type="text/css" />' + 
+					'<link href="css/style.css" rel="stylesheet" type="text/css" />' +
+					'<script src="enyo/enyo.js" type="text/javascript"></script>' +
+					'<script src="package.js" type="text/javascript"></script>';
+					'<script type="text/javascript">' +
+					'enyo.Scroller.touchScrolling = true;' +
+					'var feedReader = new FeedReader();' +
+					'feedReader.renderInto(document.body);' +
+					'</script>';
 </script>
