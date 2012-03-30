@@ -90,5 +90,6 @@ enyo.kind({
 		this.active = sender;
 		sender.addClass("active");
 		feedReader.$.content.loadFeed(sender.link);
+		this.animateToMax();
 	}
 });

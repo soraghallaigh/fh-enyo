@@ -14,7 +14,7 @@ enyo.kind({
 					style: "width: 25px; height: 25px"
 				},
 			    {
-			    	content: "Feedhenry FeedReader", 
+			    	content: "FeedHenry FeedReader", 
 			    	style: "padding-right: 30px"
 			    }
 			]

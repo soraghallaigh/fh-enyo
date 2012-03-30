@@ -1,13 +1,19 @@
 var http = require("http"),
 	https = require("https"),
-    url = require("url"),
-    path = require("path"),
-    fs = require("fs"),
-    argv = process.argv,
-    args = {
-		domain: "",
-		app: "",
+	url = require("url"),
+	path = require("path"),
+	fs = require("fs"),
+	argv = process.argv,
+	args = {
+		domain: "apps",
+		app: "KwnzC0J1iaSKWsR9NOS-7D9G",
 		port: 8888
+	},
+	mimeTypes = {
+		js: "text/javascript",
+		css: "text/css",
+		html: "text/html",
+		xml: "text/xml"
 	};
 
 for(var i = 0, il = argv.length; i < il; i++) {
@@ -116,7 +122,9 @@ http.createServer(function(request, response) {
 					return;
 				}
 
-				response.writeHead(200);
+				response.writeHead(200,{
+					"Content-Type": mimeTypes[filename.split(".").pop()] || "text/plain"
+				});
 				if(filename.indexOf("index.html") > 0) {
 					response.write(injection);
 				}
