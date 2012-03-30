@@ -34,8 +34,10 @@ enyo.kind({
 	],
 	feedList: [],
 	addFeed: function() {
-		var value = this.$.feedLink.hasNode().value;
-		this.feedList.push(value);
-		console.log(this.feedList);
+		var value = this.$.feedLink.hasNode().value.trim();
+
+		if(value) {
+			this.feedList.push(value);
+		}
 	}
 })

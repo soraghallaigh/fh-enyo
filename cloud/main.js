@@ -7,16 +7,16 @@ function getFeed(params) {
 
 	if(params.link && params.max) {
 		res = $fh.feed({
-			'link': params.link,
-			'list-max' : params.max
+			link: params.link,
+			"list-max" : params.max
 		});
 
-		if(res.list.length === 0) {
+		if(res.list && res.list.length === 0) {
 			res = {
 				msg: "Feed does not exist"
-			}
+			};
 		}
 	}
 
 	return res;
-);
+};
