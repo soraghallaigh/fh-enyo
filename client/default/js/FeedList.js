@@ -82,9 +82,11 @@ enyo.kind({
 	active: null,
 	openFeed: function(sender, event) {
 		this.active && this.active.removeClass("active");
+
 		this.active = sender;
 		sender.addClass("active");
 		feedReader.$.content.loadFeed(sender.link);
+		this.$.feedList.render();
 		this.animateToMax();
 	}
 });
