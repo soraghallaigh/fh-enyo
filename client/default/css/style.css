@@ -71,14 +71,14 @@
 	padding: 6px 8px 10px 8px !important;
 	width: 50%;
 }
-.onyx-groupbox > div {
+.feed-list > div {
 	padding: 6px 4px 6px 3px;
 	border-radius: none !important;
 	border: none;
 	border-bottom: 1px solid #B4B4B4;
 	border-top: 1px solid #F8F8F8;
 }
-.onyx-groupbox > div.active {
+.feed-list > div.active {
 	background-color: #aaa;
 }
 .loading-overlay {

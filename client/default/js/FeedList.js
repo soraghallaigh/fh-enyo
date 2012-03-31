@@ -30,12 +30,7 @@ enyo.kind({
 		{
 			kind: "enyo.Scroller",
 			classes: "feed-list",
-			components : [
-				{
-					kind: "onyx.Groupbox",
-					name: "feedList",
-				}
-			]
+			name: "feedList"
 		},
 		{
 			kind: "onyx.Grabber", 
@@ -73,7 +68,7 @@ enyo.kind({
 				container: this.$.feedList,
 				content: value,
 				link: value
-			});
+			}).render();
 
 			!noSave && $fh.data({
 				act: "save",
@@ -81,7 +76,7 @@ enyo.kind({
 				val: JSON.stringify(this.feedList)
 			});
 
-			this.$.feedList.render();
+			!this.$.feedList.rendered && this.$.feedList.render();
 		}
 	},
 	active: null,
