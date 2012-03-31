@@ -1,3 +1,7 @@
+body {
+	margin: 0;
+}
+
 #viewport {
 	position: absolute;
 	width: 100%;
