@@ -1,17 +1,11 @@
-<!doctype html>
-<html>
-<head>
-	<title>FeedHenry FeedReader</title>
-	<meta name="viewport" content="width=device-width initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-
 	<link href="enyo/enyo.css" rel="stylesheet" type="text/css" />
 	<link href="css/style.css" rel="stylesheet" type="text/css" />
 	<script src="enyo/enyo.js" type="text/javascript"></script>
 	<script src="package.js" type="text/javascript"></script>
-</head>
 <body>
 <script type="text/javascript">
 	var el = document.body.appendChild(document.createElement("div"));
+	el.id = "viewport";
 	enyo.Scroller.touchScrolling = true;
 	var feedReader = new FeedReader();
 	feedReader.renderInto(el);
