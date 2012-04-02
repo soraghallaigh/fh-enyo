@@ -1,5 +1,6 @@
 body {
 	margin: 0;
+	padding: 0;
 }
 #feed-reader {
 	height: 100%;
@@ -12,12 +13,15 @@ body {
 }
 .pages {
 	width: 200%;
-	height: 100%;
+	top: 56px;
+	bottom: 56px;
+	position: absolute;
 }
 .page {
 	width: 50%;
 	height: 100%;	
 	position: absolute;
+	overflow: hidden;
 }
 .onyx-popup {
 	z-index: 9999 !important;
@@ -28,16 +32,16 @@ body {
 .onyx-toolbar {
 	-webkit-box-shadow: 0px 1px 5px #000;
 	box-shadow: 0px 1px 5px #000;
-}
-.main-toolbar {
-	position: absolute;	
+	left: 0;
 	width: 100%;
 	z-index: 1000;
 }
+.main-toolbar {
+	position: absolute;
+	top: 0;
+}
 .nav-toolbar {
-	position: absolute;	
-	width: 100%;
-	z-index: 500;
+	position: absolute;
 	bottom: 0;
 	text-align: center;
 }
@@ -45,10 +49,9 @@ body {
 	margin: 2px 10px !important;
 }
 .feed-content {
-	top: 55px;
-	bottom: 55px;
 	position: absolute;
 	width: 100%;
+	height: 100%;
 }
 .feed-item {
 	width: 100%;
@@ -82,7 +85,7 @@ body {
 	position: absolute;
 	height: 54px;
 	width: 50px;
-	bottom: 70px;
+	bottom: 20px;
 	left: -50px;
 	border-radius: 10px 0 0 10px;
 	background-color: #D8D8D8;
@@ -90,6 +93,7 @@ body {
 .feed-list {
 	height: 100%;
 	background-color: #D8D8D8;
+	position: relative;
 }
 .onyx-toolbar .onyx-input-decorator {
 	padding: 6px 8px 10px 8px !important;

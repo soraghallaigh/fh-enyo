@@ -10,7 +10,7 @@ enyo.kind({
 	max: 100, 
 	unit: "%", 
 	classes: "enyo-fit pullout",
-	style: "width: 100%; background: #404040; left: auto;", 
+	style: "width: 100%; background: #404040; left: auto; z-index: 1000", 
 	components: [
 		{
 			kind: "onyx.Toolbar",
