@@ -8,6 +8,15 @@ body {
 	height: 100%;
 	overflow: hidden;
 }
+.pages {
+	width: 200%;
+	height: 100%;
+}
+.page {
+	width: 50%;
+	height: 100%;	
+	position: absolute;
+}
 .onyx-popup {
 	z-index: 9999 !important;
 }
@@ -88,17 +97,27 @@ body {
 	padding: 6px 4px 6px 3px;
 	border-radius: none !important;
 	border: none;
+	position: relative;
 	border-bottom: 1px solid #B4B4B4;
 	border-top: 1px solid #F8F8F8;
 }
 .feed-list .item.active {
 	background-color: #aaa;
 }
-.feed-list .item > div {
-	display: inline-block;
+.feed-list .item .link:after {
+	content: "";
+	background: url(../img/fadeout.png) repeat-y;
+	position: absolute;
+	height: 100%;
+	width: 60px;
+	right: 0;
+	top: 0;
 }
 .feed-list .item > .onyx-icon {
-	float: right;
+	position: absolute;
+	right: 3px;
+	top: 50%;
+	margin-top: -16px;
 }
 .enyo-spinner-large {
 	width: 128px;

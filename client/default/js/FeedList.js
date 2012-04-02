@@ -3,8 +3,6 @@ function validateURL(url) {
 	return urlRegxp.test(url);
 }
 
-
-
 enyo.kind({
 	name: "FeedList",
 	kind: "onyx.Slideable", 
@@ -76,7 +74,8 @@ enyo.kind({
 				classes: "item",
 				components:[
 					{
-						content: value
+						content: value,
+						classes: "link"
 					},
 					{
 						kind: "onyx.Icon", 

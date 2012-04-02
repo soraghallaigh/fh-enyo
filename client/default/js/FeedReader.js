@@ -20,15 +20,44 @@ enyo.kind({
 			]
 		},
 		{
+			name: "pages",
+			kind: "onyx.Slideable",
+			classes: "pages",
+			value: 0, 
+			max: 100, 
+			unit: "%",
+			draggable: false,
 			components: [
 				{
-					kind: "FeedList",
-					name: "feedList",
-					style: "z-index: 1000;"
+					name: "home",
+					classes: "page",
+					style: "background-color: blue",
+					components:[
+						{
+							kind: "onyx.Button",
+							content: "Home",
+						},
+						{
+							kind: "onyx.Button",
+							content: "RSS"
+						}
+					]
 				},
 				{
-					kind: "FeedContent",
-					name: "content",
+					name: "rss",
+					classes: "page",
+					style: "left: 50%",
+					components: [
+						{
+							kind: "FeedList",
+							name: "feedList",
+							style: "z-index: 1000;"
+						},
+						{
+							kind: "FeedContent",
+							name: "content",
+						}
+					]
 				}
 			]
 		},
@@ -45,11 +74,13 @@ enyo.kind({
 						{
 							active: true,
 							src: "img/home.png",
-							ontap: "changePage"
+							ontap: "changePage",
+							page: 0
 						},
 						{
 							src: "img/rss.png",
-							ontap: "changePage"
+							ontap: "changePage",
+							page: 1
 						}
 					]
 				}
@@ -77,7 +108,7 @@ enyo.kind({
 			]
 		}
 	],
-	changePage: function() {
-		console.log("change page");
+	changePage: function(sender) {
+		this.$.pages.animateTo(-sender.page * 50);
 	}
 });

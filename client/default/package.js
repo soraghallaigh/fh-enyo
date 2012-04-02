@@ -4,5 +4,6 @@ enyo.depends(
 	"js/FeedReader.js",
 	"js/FeedContent.js",
 	"js/FeedList.js",
-	"js/FeedItem.js"
+	"js/FeedItem.js",
+	"js/AppPage.js"
 );
