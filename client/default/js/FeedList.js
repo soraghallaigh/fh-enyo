@@ -62,6 +62,9 @@ enyo.kind({
 	addFeed: function(value, noSave) {
 		value = typeof value == "string" ? value : this.$.feedLink.hasNode().value.trim();
 		noSave = typeof noSave == "boolean" ? noSave : false;
+
+		feedLink.hasNode().blur();
+		
 		if(validateURL(value)) {
 			this.$.feedLink.hasNode().value = "";
 			this.feedList.push(value);
