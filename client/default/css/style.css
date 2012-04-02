@@ -120,6 +120,9 @@ body {
 	right: 0;
 	top: 0;
 }
+.feed-list .item.active .link:after {
+	background: url(../img/fadeout-dark.png) repeat-y;
+}
 .feed-list .item > .onyx-icon {
 	position: absolute;
 	right: 3px;
