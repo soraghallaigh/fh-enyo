@@ -13,10 +13,10 @@ enyo.kind({
 					src: "img/feedhenry_logo_web_normal.png",
 					style: "width: 25px; height: 25px"
 				},
-			    {
-			    	content: "FeedHenry FeedReader", 
-			    	style: "padding-right: 30px"
-			    }
+				{
+					content: "FeedHenry FeedReader", 
+					style: "padding-right: 30px"
+				}
 			]
 		},
 		{
@@ -45,19 +45,39 @@ enyo.kind({
 						{
 							active: true,
 							src: "img/home.png",
-							tap: "changePage"
+							ontap: "changePage"
 						},
 						{
 							src: "img/rss.png",
-							tap: "changePage"
+							ontap: "changePage"
 						}
 					]
+				}
+			]
+		},
+		{
+			name: "error",
+			kind: "onyx.Popup",
+			centered: true,
+			floating: true,
+			classes: "big",
+			content: ""
+		},
+		{
+			name: "loading",
+			kind: "onyx.Popup",
+			centered: true,
+			floating: true,
+			classes: "loading",
+			components: [
+				{
+					tag: "div",
+					classes: "enyo-rotating-image enyo-spinner-large"
 				}
 			]
 		}
 	],
 	changePage: function() {
-
+		console.log("change page");
 	}
-
 });

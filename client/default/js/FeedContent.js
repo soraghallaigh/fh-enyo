@@ -4,6 +4,7 @@ enyo.kind({
 	fit: true,
 	classes: "feed-content",
 	components: [
+
 	],
 	addItem: function(feedItem) {
 		this.addControl(new FeedItem(feedItem.author, feedItem.title, feedItem.description));
@@ -22,21 +23,25 @@ enyo.kind({
 					load();
 				}, 500);
 			}
-			else if(res.list) {
+			else if(list) {
 				for(var i = 0, il = list.length; i < il; i++) {
 					content.addItem(list[i].fields);
 				}
 				content.render();
+				feedReader.$.loading.hide();
 			}
 			else if(res.status && res.status == "error") {
-
+				feedReader.$.error.setContent(res.msg);
+				feedReader.$.error.show();
 			}
 		}
 		function handleError() {
-
+			feedReader.$.loading.hide();
 		}
 
 		function load() {
+			feedReader.$.loading.show();
+
 			$fh.act({
 				act: "getFeed",
 				req: {

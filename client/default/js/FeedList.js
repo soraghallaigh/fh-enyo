@@ -90,6 +90,10 @@ enyo.kind({
 
 			!this.$.feedList.rendered && this.$.feedList.render();
 		}
+		else {
+			feedReader.$.error.setContent("Not a valid URL");
+			feedReader.$.error.show();
+		}
 	},
 	saveFeeds: function() {
 		$fh.data({
