@@ -1,5 +1,6 @@
 enyo.kind({
 	name: "FeedReader",
+	id: "feed-reader",
 	classes: "onyx enyo-unselectable",
 	kind: enyo.Control,
 	components: 
