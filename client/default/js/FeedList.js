@@ -1,3 +1,10 @@
+function validateURL(url) {
+	var urlRegxp = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/;
+	return urlRegxp.test(url);
+}
+
+
+
 enyo.kind({
 	name: "FeedList",
 	kind: "onyx.Slideable", 
@@ -37,10 +44,7 @@ enyo.kind({
 		}
 	],
 	feedList: [],
-	feedLinkItem: {
-		kind: enyo.Control,
-		ontap: "openFeed"
-	},
+	active: null,
 	create: function() {
 		this.inherited(arguments);
 		var list = this;
@@ -60,26 +64,40 @@ enyo.kind({
 	addFeed: function(value, noSave) {
 		value = typeof value == "string" ? value : this.$.feedLink.hasNode().value.trim();
 		noSave = typeof noSave == "boolean" ? noSave : false;
-		if(value) {
+		if(validateURL(value)) {
 			this.$.feedLink.hasNode().value = "";
 			this.feedList.push(value);
 
-			this.createComponent(this.feedLinkItem, {
+			this.createComponent({
+				kind: enyo.Control,
+				ontap: "openFeed",
 				container: this.$.feedList,
-				content: value,
-				link: value
+				link: value,
+				classes: "item",
+				components:[
+					{
+						content: value
+					},
+					{
+						kind: "onyx.Icon", 
+						src: "img/remove-button.png",
+						ontap: "removeFeed"
+					}
+				]
 			}).render();
 
-			!noSave && $fh.data({
-				act: "save",
-				key: "feedList",
-				val: JSON.stringify(this.feedList)
-			});
+			!noSave && this.saveFeeds();
 
 			!this.$.feedList.rendered && this.$.feedList.render();
 		}
 	},
-	active: null,
+	saveFeeds: function() {
+		$fh.data({
+			act: "save",
+			key: "feedList",
+			val: JSON.stringify(this.feedList)
+		});
+	},
 	openFeed: function(sender, event) {
 		this.active && this.active.removeClass("active");
 
@@ -88,5 +106,16 @@ enyo.kind({
 		feedReader.$.content.loadFeed(sender.link);
 		this.$.feedList.render();
 		this.animateToMax();
+	},
+	removeFeed: function(sender, event) {
+		var feed = sender.container.link,
+			feedList = this.feedList;
+
+		feedList.splice(feedList.indexOf(feed), 1);
+		this.saveFeeds();
+
+		sender.container.destroy();
+
+		event.srcEvent.stopPropagation();
 	}
 });

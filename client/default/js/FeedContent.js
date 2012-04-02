@@ -22,11 +22,14 @@ enyo.kind({
 					load();
 				}, 500);
 			}
-			else {
+			else if(res.list) {
 				for(var i = 0, il = list.length; i < il; i++) {
 					content.addItem(list[i].fields);
 				}
 				content.render();
+			}
+			else if(res.status && res.status == "error") {
+
 			}
 		}
 		function handleError() {

@@ -34,7 +34,30 @@ enyo.kind({
 		},
 		{
 			kind: "onyx.Toolbar",
-			classes: "nav-toolbar"
+			defaultKind: "onyx.IconButton",
+			classes: "nav-toolbar",
+			components: [
+				{
+					kind: "Group", 
+					noDom: true, 
+					defaultKind: "onyx.IconButton", 
+					components: [
+						{
+							active: true,
+							src: "img/home.png",
+							tap: "changePage"
+						},
+						{
+							src: "img/rss.png",
+							tap: "changePage"
+						}
+					]
+				}
+			]
 		}
-	]
+	],
+	changePage: function() {
+
+	}
+
 });

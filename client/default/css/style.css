@@ -21,8 +21,12 @@ body {
 .nav-toolbar {
 	position: absolute;	
 	width: 100%;
-	z-index: 1000;
+	z-index: 500;
 	bottom: 0;
+	text-align: center;
+}
+.nav-toolbar .onyx-icon {
+	margin: 2px 10px !important;
 }
 .feed-content {
 	top: 55px;
@@ -62,7 +66,7 @@ body {
 	position: absolute;
 	height: 54px;
 	width: 50px;
-	bottom: 50px;
+	bottom: 70px;
 	left: -50px;
 	border-radius: 10px 0 0 10px;
 	background-color: #D8D8D8;
@@ -75,44 +79,19 @@ body {
 	padding: 6px 8px 10px 8px !important;
 	width: 50%;
 }
-.feed-list > div > div {
+.feed-list .item {
 	padding: 6px 4px 6px 3px;
 	border-radius: none !important;
 	border: none;
 	border-bottom: 1px solid #B4B4B4;
 	border-top: 1px solid #F8F8F8;
 }
-.feed-list > div > div.active {
+.feed-list .item.active {
 	background-color: #aaa;
 }
-.loading-overlay {
-	left: 0;
-	top: 0;
-	bottom: 0;
-	right: 0;
-	position: absolute;
-	z-index: 9999;
-	display: block;
+.feed-list .item > div {
+	display: inline-block;
 }
-.loading-overlay.active {
-	display: block;
-}
-.loading-overlay .enyo-rotating-image {
-	width: 128px;
-	height: 128px;
-	left: 50%;
-	top: 50%;
-	margin-left: -64px;
-	margin-top: -64px;
-}
-
-
-.enyo-rotating-image {
-	-webkit-animation-name: enyo-rotating-image-rotate;
-	-webkit-animation-iteration-count: infinite;
-	-webkit-animation-duration: 1s;
-	-webkit-animation-timing-function: linear;
-	overflow: hidden;
-	-webkit-background-origin: padding-box;
-	-webkit-background-clip: content-box;
+.feed-list .item > .onyx-icon {
+	float: right;
 }
