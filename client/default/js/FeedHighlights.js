@@ -27,6 +27,7 @@ enyo.kind({
 
 			kind: enyo.Control,
 			content: res.highlight,
+			classes: "highlight",
 			components: [
 				{
 					classes: "title",

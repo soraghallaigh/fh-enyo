@@ -13,6 +13,12 @@ body {
 }
 .header {
 }
+.highlight {
+	margin: 5px;
+}
+.highlight img {
+	max-width: 90%;
+}
 .pages {
 	width: 200%;
 	top: 52px;
