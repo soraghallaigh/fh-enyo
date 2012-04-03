@@ -32,25 +32,27 @@ for(var i = 0, il = argv.length; i < il; i++) {
 	}
 }
 
+var domain = args.domain + args.baseDomain;
 
-var injection = ['<script src="https://' + args.domain + '.feedhenry.com/static/pec/script/studio/155-scripts.js"></script>',
+
+var injection = ['<script src="https://' + domain + '/static/pec/script/studio/155-scripts.js"></script>',
 '<script>',
 '        $fhclient = $fh.init({',
 '            "appMode":"debug",',
 '            "checkDeliveryScheme":true,',
 '            "debugCloudType":"fh",',
 '            "debugCloudUrl":',
-'            "https://' + args.domain + '.feedhenry.com",',
+'            "https://' + domain + '",',
 '            "deliveryScheme":"https://",',
 '            "destination":{',
 '                "inline":false,',
 '                "name":"studio"',
 '            },',
 '            "domain": "' + args.domain + '",',
-'            "host": "' + args.domain + args.baseDomain + '",',
+'            "host": "' + domain + '",',
 '            "nameserver":"https://ainm.feedhenry.com",',
 '            "releaseCloudType":"fh",',
-'            "releaseCloudUrl":"https://' + args.domain + args.baseDomain + '",',
+'            "releaseCloudUrl":"https://' + domain + '",',
 '            "swagger_view":"Sju8tJFwM7kox_S1rr1wZ2PS",',
 '            "urltag":"",',
 '            "useSecureConnection":true,',
@@ -89,12 +91,8 @@ http.createServer(function(request, response) {
 					path: request.url,
 					method: request.method,
 					host: args.domain + args.baseDomain,
-					headers: {
-						"content-length": postLen,
-						"content-type": request["content-type"]
-					}
+					headers: request.headers
 				}, function(proxyRes) {
-
 					response.writeHead(proxyRes.statusCode, proxyRes.headers);
 
 					proxyRes.on("data", function(chunk) {
@@ -136,7 +134,7 @@ http.createServer(function(request, response) {
 
 				response.writeHead(200,{
 					//set the response type or default to text/plain
-					"Content-Type": mimeTypes[filename.split(".").pop()] || "text/plain"
+					"content-type": mimeTypes[filename.split(".").pop()] || "text/plain"
 				});
 				if(filename.indexOf("index.html") > 0) {
 					response.write(injection);

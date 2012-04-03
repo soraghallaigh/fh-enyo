@@ -24,24 +24,13 @@ function getFeed(params) {
 };
 
 function getFeedHighlights(params) {
-	var res = {
-		status: "error",
-		msg: "Invalid parameters"
-	};
+	var res = getFeed(params);
 
-	if(params.link && params.max) {
-		res = $fh.feed({
-			link: params.link,
-			"list-max" : params.max
-		});
-
-		if(res.list && res.list.length === 0) {
-			res = {
-				status: "error",
-				msg: "Feed does not exist"
-			};
-		}
+	if(res.status !== "error" && res.status !== "pending") {
+		res = {
+			highlight: res.list[0]
+		};
 	}
 
-	return $fh.feed;
+	return res;
 };

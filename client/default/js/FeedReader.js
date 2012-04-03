@@ -7,7 +7,9 @@ enyo.kind({
 	kind: enyo.Control,
 	create: function() {
 		this.inherited(arguments);
+		var feedList = this.$.list.feedList;
 
+		feedList.length && this.$.home.loadHighlights(feedList[0]);
 
 	},
 	components: 
@@ -41,7 +43,7 @@ enyo.kind({
 					kind: "FeedHighlights",
 					classes: "page",
 					components:[
-						
+
 					]
 				},
 				{
