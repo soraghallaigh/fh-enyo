@@ -158,6 +158,7 @@ enyo.kind({
 		//save the list to localstorage
 		this.saveFeeds();
 		//remove the list from the 
+		this.removeControl(sender.container);
 		sender.container.destroy();
 
 	}
