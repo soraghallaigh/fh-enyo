@@ -7,13 +7,38 @@ enyo.kind({
 	kind: enyo.Control,
 	create: function() {
 		this.inherited(arguments);
-		var feedList = this.$.list.feedList;
 
-		feedList.length && this.$.home.loadHighlights(feedList[0]);
+		//allow the page to stop loading before we get content
+		setTimeout(function() {
+			var feedList = this.$.list.feedList;
+
+			feedList.length && this.$.home.loadHighlights(feedList[0]);
+		}.bind(this), 1000);
 
 	},
 	components: 
 	[
+		{
+			name: "error",
+			kind: "onyx.Popup",
+			centered: true,
+			floating: true,
+			classes: "big",
+			content: ""
+		},
+		{
+			name: "loading",
+			kind: "onyx.Popup",
+			centered: true,
+			floating: true,
+			classes: "loading",
+			components: [
+				{
+					tag: "div",
+					classes: "enyo-rotating-image enyo-spinner-large"
+				}
+			]
+		},
 		{
 			kind: "onyx.Toolbar",
 			classes: "main-toolbar",
@@ -86,27 +111,6 @@ enyo.kind({
 							page: 1
 						}
 					]
-				}
-			]
-		},
-		{
-			name: "error",
-			kind: "onyx.Popup",
-			centered: true,
-			floating: true,
-			classes: "big",
-			content: ""
-		},
-		{
-			name: "loading",
-			kind: "onyx.Popup",
-			centered: true,
-			floating: true,
-			classes: "loading",
-			components: [
-				{
-					tag: "div",
-					classes: "enyo-rotating-image enyo-spinner-large"
 				}
 			]
 		}

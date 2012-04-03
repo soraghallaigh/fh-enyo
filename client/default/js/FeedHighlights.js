@@ -1,7 +1,14 @@
 enyo.kind({
 	name: "FeedHighlights",
-	kind: enyo.Control,
+	kind: enyo.Scroller,
+	components: [
+		{
+			classes: "heading",
+			content: "Highlights"
+		}
+	],
 	loadHighlights: function(link) {
+		feedReader.$.loading.show();
 		$fh.act({
 			act: "getFeedHighlights",
 			req: {
@@ -12,13 +19,29 @@ enyo.kind({
 		this.handleError.bind(this));
 	},
 	handleResponse: function(res) {
+		var highlight = res.highlight.fields;
+		feedReader.$.loading.hide();
+
 		this.createComponent({
+
 			kind: enyo.Control,
 			content: res.highlight,
-			allowHtml: true
+			components: [
+				{
+					tag: "h1",
+					classes: "title",
+					allowHtml: true,
+					content: highlight.title
+				},
+				{
+					classes: "description",
+					allowHtml: true,
+					content: highlight.description					
+				}
+			]
 		}).render();
 	},
 	handleError: function() {
-
+		feedReader.$.loading.hide();
 	}
 });

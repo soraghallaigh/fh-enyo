@@ -27,7 +27,7 @@ enyo.kind({
 		this.handleError.bind(this));
 	},
 	handleError: function() {
-		feedReader.$.loading.hide();
+		this.container.$.loading.hide();
 	},
 	handleResponse: function(res) {
 		var feedContent = this,

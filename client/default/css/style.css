@@ -11,6 +11,8 @@ body {
 	height: 100%;
 	overflow: hidden;
 }
+.header {
+}
 .pages {
 	width: 200%;
 	top: 52px;
