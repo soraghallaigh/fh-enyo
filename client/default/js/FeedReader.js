@@ -8,11 +8,11 @@ enyo.kind({
 	create: function() {
 		this.inherited(arguments);
 
-		allow the page to stop loading before we get content
+		//allow the page to stop loading before we get content
 		setTimeout(function() {
 			var feedList = this.$.list.feedList;
 
-			//feedList.length && this.$.home.loadHighlights(feedList[0]);
+			feedList.length && this.$.home.loadHighlights(feedList[0]);
 		}.bind(this), 1000);
 
 	},
