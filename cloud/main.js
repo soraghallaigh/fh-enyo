@@ -24,6 +24,7 @@ function getFeed(params) {
 };
 
 function getFeedHighlights(params) {
+	params.max = 1000;
 	var res = getFeed(params);
 
 	if(res.status !== "error" && res.status !== "pending") {

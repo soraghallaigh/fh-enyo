@@ -4,7 +4,9 @@ enyo.kind({
 	loadHighlights: function(link) {
 		$fh.act({
 			act: "getFeedHighlights",
-			link: link
+			req: {
+				link: link
+			}
 		},
 		this.handleResponse.bind(this),
 		this.handleError.bind(this));
