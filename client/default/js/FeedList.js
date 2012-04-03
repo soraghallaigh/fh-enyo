@@ -160,6 +160,8 @@ enyo.kind({
 		//remove the list from the 
 		this.removeControl(sender.container);
 		sender.container.destroy();
+		
+		this.$.feedList.render();
 
 	}
 });
