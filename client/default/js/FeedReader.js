@@ -42,7 +42,7 @@ enyo.kind({
 					components: [
 						{
 							kind: "FeedList",
-							name: "feedList",
+							name: "list",
 							style: "z-index: 1000;"
 						},
 						{
