@@ -4,6 +4,7 @@ enyo.kind({
 	components: [
 		{
 			classes: "heading",
+			tag: "h1",
 			content: "Highlights"
 		}
 	],
@@ -28,8 +29,8 @@ enyo.kind({
 			content: res.highlight,
 			components: [
 				{
-					tag: "h1",
 					classes: "title",
+					tag: "h2",
 					allowHtml: true,
 					content: highlight.title
 				},

@@ -14,6 +14,7 @@ enyo.kind({
 	classes: "enyo-fit pullout",
 	style: "width: 100%; background: #404040; left: auto; z-index: 1000", 
 	defaultFeeds: [
+		"http://www.engadget.com/rss.xml",
 		"http://reddit.com/.rss",
 		"http://feedhenry.com/feed/",
 		"http://news.ycombinator.com/rss"
