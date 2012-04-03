@@ -13,6 +13,11 @@ enyo.kind({
 	unit: "%", 
 	classes: "enyo-fit pullout",
 	style: "width: 100%; background: #404040; left: auto; z-index: 1000", 
+	defaultFeeds: [
+		"http://reddit.com/.rss",
+		"http://feedhenry.com/feed/",
+		"http://news.ycombinator.com/rss"
+	],
 	components: [
 		{
 			kind: "onyx.Toolbar",
@@ -59,6 +64,11 @@ enyo.kind({
 			if(res.val) {
 				list.loadFeedList(JSON.parse(res.val));
 			}
+			else {
+				list.loadFeedList(list.defaultFeeds);
+			}
+		},function() {
+			list.loadFeedList(list.defaultFeeds);
 		});
 	},
 	loadFeedList: function(feedList) {

@@ -5,10 +5,15 @@ var http = require("http"),
 	fs = require("fs"),
 	argv = process.argv,
 	args = {
+		baseDomain: ".feedhenry.com",
+		//default domain
 		domain: "apps",
-		app: "KwnzC0J1iaSKWsR9NOS-7D9G",
+		//app guid
+		app: "",
+		//default port
 		port: 8888
 	},
+	//small subset of mime types so to prevent warnings in chrome
 	mimeTypes = {
 		js: "text/javascript",
 		css: "text/css",
@@ -16,6 +21,9 @@ var http = require("http"),
 		xml: "text/xml"
 	};
 
+
+
+//parse the parameters
 for(var i = 0, il = argv.length; i < il; i++) {
 	var param = argv[i].split("=");
 
@@ -39,10 +47,10 @@ var injection = ['<script src="https://' + args.domain + '.feedhenry.com/static/
 '                "name":"studio"',
 '            },',
 '            "domain": "' + args.domain + '",',
-'            "host": "' + args.domain + '.feedhenry.com",',
+'            "host": "' + args.domain + args.baseDomain + '",',
 '            "nameserver":"https://ainm.feedhenry.com",',
 '            "releaseCloudType":"fh",',
-'            "releaseCloudUrl":"https://' + args.domain + '.feedhenry.com",',
+'            "releaseCloudUrl":"https://' + args.domain + args.baseDomain + '",',
 '            "swagger_view":"Sju8tJFwM7kox_S1rr1wZ2PS",',
 '            "urltag":"",',
 '            "useSecureConnection":true,',
@@ -64,25 +72,26 @@ http.createServer(function(request, response) {
 
 	var uri = url.parse(request.url).pathname,
 		filename = path.join(process.cwd(), uri),
-		post = [];
+		post = new Buffer(parseInt(request.headers["content-length"], 10)),
+		postLen = 0;
+
 
 	request.on("data", function(chunk) {
-		post.push(chunk.toString());
+		chunk.copy(post, postLen);
+		postLen += chunk.length;
 	});
 
 	request.on("end", function() {
 		path.exists(filename, function(exists) {
 			if(!exists && uri.indexOf("/box/srv/") !== -1) {
 
-				post = post.join('');
-
 				var proxyReq = https.request({
 					path: request.url,
 					method: request.method,
-					host: args.domain + ".feedhenry.com",
+					host: args.domain + args.baseDomain,
 					headers: {
-						"content-length": post.length,
-						"content-type": "application/json"
+						"content-length": postLen,
+						"content-type": request["content-type"]
 					}
 				}, function(proxyRes) {
 
@@ -96,6 +105,7 @@ http.createServer(function(request, response) {
 					});
 				});
 
+
 				proxyReq.write(post);
 
 				proxyReq.end();
@@ -103,8 +113,10 @@ http.createServer(function(request, response) {
 				return;
 			}
 			else if(!exists) {
-				response.writeHead(404,"");
-				response.write("derp");
+				response.writeHead(404,{
+					"Content-Type": mimeTypes.html
+				});
+				response.write("404 Not found");
 				response.end();
 				return;
 			}
@@ -123,6 +135,7 @@ http.createServer(function(request, response) {
 				}
 
 				response.writeHead(200,{
+					//set the response type or default to text/plain
 					"Content-Type": mimeTypes[filename.split(".").pop()] || "text/plain"
 				});
 				if(filename.indexOf("index.html") > 0) {

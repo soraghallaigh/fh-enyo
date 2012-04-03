@@ -11,10 +11,6 @@
 	enyo.Scroller.touchScrolling = true;
 	var feedReader = new FeedReader();
 	feedReader.renderInto(el);
-
-	setTimeout(function() {
-		feedReader.$.content.loadFeed(feedReader.$.list.feedList[0]);
-	}, 2000);
 </script>
 </body>
 </html>

@@ -1,8 +1,15 @@
+
+//main app
 enyo.kind({
 	name: "FeedReader",
 	id: "feed-reader",
 	classes: "onyx enyo-unselectable",
 	kind: enyo.Control,
+	create: function() {
+		this.inherited(arguments);
+
+
+	},
 	components: 
 	[
 		{
@@ -31,8 +38,10 @@ enyo.kind({
 			components: [
 				{
 					name: "home",
+					kind: "FeedHighlights",
 					classes: "page",
 					components:[
+						
 					]
 				},
 				{
