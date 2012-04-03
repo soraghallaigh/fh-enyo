@@ -32,7 +32,7 @@ enyo.kind({
 
 		this.$.title.setContent(this.title);
 		this.$.description.setContent(this.description);
-		this.$.author.setContent(this.author);
+		//this.$.author.setContent(this.author);
 
 	},
 	toggleDescription: function() {

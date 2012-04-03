@@ -32,16 +32,7 @@ enyo.kind({
 				{
 					name: "home",
 					classes: "page",
-					style: "background-color: blue",
 					components:[
-						{
-							kind: "onyx.Button",
-							content: "Home",
-						},
-						{
-							kind: "onyx.Button",
-							content: "RSS"
-						}
 					]
 				},
 				{

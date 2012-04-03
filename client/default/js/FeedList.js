@@ -3,6 +3,8 @@ function validateURL(url) {
 	return urlRegxp.test(url);
 }
 
+
+//Slide out list containing a list of rss feeds
 enyo.kind({
 	name: "FeedList",
 	kind: "onyx.Slideable", 
@@ -21,7 +23,7 @@ enyo.kind({
 						{
 							kind: "onyx.Input", 
 							placeholder: "RSS Feed",
-							name: "feedLink"
+							name: "feedInput"
 						}
 					]
 				},
@@ -38,6 +40,11 @@ enyo.kind({
 			name: "feedList"
 		},
 		{
+			classes: "outer",
+			kind: "onyx.Grabber", 
+		},
+		{
+			classes: "inner",
 			kind: "onyx.Grabber", 
 		}
 	],
@@ -60,15 +67,24 @@ enyo.kind({
 		}
 	},
 	addFeed: function(value, noSave) {
-		value = typeof value == "string" ? value : this.$.feedLink.hasNode().value.trim();
+		var feedInput = this.$.feedInput.hasNode();
+
+		value = typeof value == "string" ? value : feedInput.value.trim();
 		noSave = typeof noSave == "boolean" ? noSave : false;
 
-		this.$.feedLink.hasNode() && this.$.feedLink.hasNode().blur();
+		//check whether the control has been rendered before trying to blur it
+		feedInput && feedInput.blur();
 
-
+		//only add feeds if they are valid urls
 		if(validateURL(value)) {
-			this.$.feedLink.hasNode().value = "";
+			//reset the input
+			feedInput.value = "";
+
+			//add the value to the list of feeds
 			this.feedList.push(value);
+			//the noSave flag is set if we are adding the feeds from local storage
+			//so they are not duplicated
+			!noSave && this.saveFeeds();
 
 			this.createComponent({
 				kind: enyo.Control,
@@ -81,6 +97,7 @@ enyo.kind({
 						content: value,
 						classes: "link"
 					},
+					//remove button
 					{
 						kind: "onyx.Icon", 
 						src: "img/remove-button.png",
@@ -89,15 +106,15 @@ enyo.kind({
 				]
 			}).render();
 
-			!noSave && this.saveFeeds();
-
 			!this.$.feedList.rendered && this.$.feedList.render();
 		}
 		else {
-			feedReader.$.error.setContent("Not a valid URL");
-			feedReader.$.error.show();
+			var errorDialog = feedReader.$.error;
+			errorDialog.setContent("Not a valid URL");
+			errorDialog.show();
 		}
 	},
+	//save the list of feeds to local storage
 	saveFeeds: function() {
 		$fh.data({
 			act: "save",
@@ -110,19 +127,27 @@ enyo.kind({
 
 		this.active = sender;
 		sender.addClass("active");
+		//load the feed in the main view
 		feedReader.$.content.loadFeed(sender.link);
+
 		this.$.feedList.render();
+
+		//close the slideout
 		this.animateToMax();
 	},
+	//click event for close the remove feed button
 	removeFeed: function(sender, event) {
+		event.srcEvent.stopPropagation();
+
 		var feed = sender.container.link,
 			feedList = this.feedList;
 
+		//remove the feed from the list of fields
 		feedList.splice(feedList.indexOf(feed), 1);
+		//save the list to localstorage
 		this.saveFeeds();
-
+		//remove the list from the 
 		sender.container.destroy();
 
-		event.srcEvent.stopPropagation();
 	}
 });
