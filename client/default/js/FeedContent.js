@@ -4,6 +4,13 @@ enyo.kind({
 	fit: true,
 	classes: "feed-content",
 	currentLink: "",
+	components: [
+		{
+			content: "drag tab to select a feed &rarr;",
+			allowHtml: true,
+			classes: "instruction"
+		}
+	],
 	addItem: function(feedItem) {
 		this.addControl(new FeedItem(feedItem.author, feedItem.title, feedItem.description));
 	},

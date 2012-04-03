@@ -31,7 +31,7 @@ enyo.kind({
 			components: [
 				{
 					classes: "title",
-					tag: "h2",
+					tag: "h3",
 					allowHtml: true,
 					content: highlight.title
 				},

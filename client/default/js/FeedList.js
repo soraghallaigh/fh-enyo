@@ -39,7 +39,7 @@ enyo.kind({
 					ontap: "addFeed"
 				}
 			]
-		},	
+		},
 		{
 			kind: "enyo.Scroller",
 			classes: "feed-list",
