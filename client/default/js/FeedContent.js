@@ -27,7 +27,7 @@ enyo.kind({
 			act: "getFeed",
 			req: {
 				link: link,
-				max: 100
+				max: 25
 			}
 		}, 
 		this.handleResponse.bind(this),
