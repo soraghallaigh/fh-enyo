@@ -22,16 +22,3 @@ function getFeed(params) {
 
 	return res;
 };
-
-function getFeedHighlights(params) {
-	params.max = 1000;
-	var res = getFeed(params);
-
-	if(res.status !== "error" && res.status !== "pending") {
-		res = {
-			highlight: res.list[0]
-		};
-	}
-
-	return res;
-};
