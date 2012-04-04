@@ -12,7 +12,7 @@ enyo.kind({
 	max: 100, 
 	unit: "%", 
 	classes: "enyo-fit pullout",
-	style: "width: 100%; background: #404040; left: auto; z-index: 1000", 
+	style: "width: 100%; left: auto; z-index: 1000", 
 	defaultFeeds: [
 		"http://www.engadget.com/rss.xml",
 		"http://reddit.com/.rss",
@@ -39,6 +39,12 @@ enyo.kind({
 					ontap: "addFeed"
 				}
 			]
+		},
+		{
+			name: "instruction",
+			content: "Select a feed below to view &darr;",
+			allowHtml: true,
+			style: "width: 100%; text-align: center; font-size: 14px;"
 		},
 		{
 			kind: "enyo.Scroller",
@@ -136,6 +142,7 @@ enyo.kind({
 	openFeed: function(sender, event) {
 		this.active && this.active.removeClass("active");
 
+
 		this.active = sender;
 		sender.addClass("active");
 		//load the feed in the main view
@@ -160,7 +167,7 @@ enyo.kind({
 		//remove the list from the 
 		this.removeControl(sender.container);
 		sender.container.destroy();
-		
+
 		this.$.feedList.render();
 
 	}

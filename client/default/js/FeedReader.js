@@ -86,7 +86,7 @@ enyo.kind({
 							name: "content",
 							components: [
 								{
-									content: "drag tab to add or select a feed &rarr;",
+									content: "drag tab to add/select a feed &rarr;",
 									allowHtml: true,
 									classes: "instruction"
 								}
