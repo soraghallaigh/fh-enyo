@@ -47,6 +47,22 @@ enyo.kind({
 				feedContent.addItem(list[i].fields);
 			}
 			feedContent.render();
+
+
+			var elements = this.hasNode() && this.hasNode().getElementsByTagName("a");
+
+
+			for(var i = 0, il = elements.length; i < il; i++) {
+				elements[i].addEventListener("click", function(e) {
+					e.preventDefault();
+					$fh.webview({
+						url: this.href
+					});
+					return false;
+				}, false);
+			}
+
+
 			feedReader.$.loading.hide();
 		}
 		else if(res.status && res.status == "error") {

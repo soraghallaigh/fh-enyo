@@ -6,9 +6,7 @@ enyo.kind({
 		{
 			classes: "title",
 			name: "title",
-			ontap: "toggleDescription",
-			ontouchstart: "setActive",
-			ontouchend: "setInactive",
+			ontap: "toggleDescription"
 		},
 		{
 			name: "description",
@@ -24,7 +22,6 @@ enyo.kind({
 		this.author = author;
 		this.title = title;
 		this.description = description;
-
 		this.inherited(arguments);
 	},
 	create: function(author, title, description) {
