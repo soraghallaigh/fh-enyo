@@ -10,11 +10,8 @@ enyo.kind({
 
 		//allow the page to stop loading before we get content
 		setTimeout(function() {
-			var feedList = this.$.list.feedList;
-
-			feedList.length && this.$.home.loadHighlights(feedList[0]);
+			this.$.mainfeed.loadFeed("http://feedhenry.com/feed/");
 		}.bind(this), 1000);
-
 	},
 	components: 
 	[
@@ -51,30 +48,36 @@ enyo.kind({
 				{
 					content: "FeedHenry FeedReader", 
 					style: "padding-right: 30px"
+				},
+				{
+					name: "pageTitle",
+					content: ""
 				}
+
 			]
 		},
 		{
 			name: "pages",
-			kind: "onyx.Slideable",
 			classes: "pages",
-			value: 0, 
-			max: 100, 
-			unit: "%",
-			draggable: false,
 			components: [
 				{
 					name: "home",
-					kind: "FeedHighlights",
-					classes: "page",
-					components:[
-
+					kind: "AppPage",
+					active: true,
+					title: "Main Feed",
+					components: [
+						{
+							name: "mainfeed",
+							kind: "FeedContent"
+						}
 					]
 				},
 				{
+					kind: "AppPage",
 					name: "rss",
-					classes: "page",
-					style: "left: 50%",
+					title: "Your Feeds",
+					active: false,
+					slideout: "right",
 					components: [
 						{
 							kind: "FeedList",
@@ -84,6 +87,13 @@ enyo.kind({
 						{
 							kind: "FeedContent",
 							name: "content",
+							components: [
+								{
+									content: "drag tab to select a feed &rarr;",
+									allowHtml: true,
+									classes: "instruction"
+								}
+							],
 						}
 					]
 				}
@@ -103,19 +113,22 @@ enyo.kind({
 							active: true,
 							src: "img/home.png",
 							ontap: "changePage",
-							page: 0
+							page: "home"
 						},
 						{
 							src: "img/rss.png",
 							ontap: "changePage",
-							page: 1
+							page: "rss"
 						}
 					]
 				}
 			]
 		}
 	],
+	activePage: "",
 	changePage: function(sender) {
-		this.$.pages.animateTo(-sender.page * 50);
+		this.activePage && this.activePage.hide();
+		this.activePage = this.$[sender.page].show();
+		this.$.pageTitle.setContent(this.activePage.title);
 	}
 });

@@ -8,34 +8,34 @@ img {
 #feed-reader {
 	height: 100%;
 }
+.onyx-input-decorator {
+	position: relative;
+}
 #viewport {
 	position: absolute;
 	width: 100%;
 	height: 100%;
 	overflow: hidden;
 }
-.highlight {
-	margin: 5px;
-}
-.instruction {
-	z-index: -1;
-	width: 100%;
-	position: absolute;
-	text-align: center;
-	bottom: 30px;
-	font-size: 16px;
-}
 .pages {
-	width: 200%;
+	width: 100%;
 	top: 52px;
 	bottom: 54px;
 	position: absolute;
 }
 .page {
-	width: 50%;
-	height: 100%;	
-	position: absolute;
+	width: 100%;
+	height: 100%;
 	overflow: hidden;
+	position: absolute;
+	background-color: #EAEAEA;
+}
+.instruction {
+	width: 100%;
+	text-align: center;
+	bottom: 30px;
+	font-size: 16px;
+	position: absolute;
 }
 .onyx-popup {
 	z-index: 9999 !important;
