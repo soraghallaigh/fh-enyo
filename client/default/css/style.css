@@ -90,13 +90,13 @@ img {
 	border-top: 1px solid #3C3C3C;
 	border-bottom: 1px solid #5C5C5C;
 }
-.feed-item .description {
+.feed-item .content {
 	display: none;
 	overflow: hidden;
 	height: 0;
 	font-size: 13px;
 }
-.feed-item .description.open {
+.feed-item .content.open {
 	display: inline-block;
 	overflow: hidden;
 	height: auto;

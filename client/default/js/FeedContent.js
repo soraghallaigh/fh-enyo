@@ -4,7 +4,7 @@ enyo.kind({
 	classes: "feed-content",
 	currentLink: "",
 	addItem: function(feedItem) {
-		this.addControl(new FeedItem(feedItem.author, feedItem.title, feedItem.description));
+		this.addControl(new FeedItem(feedItem.author, feedItem.title, feedItem.contentEncoded));
 	},
 	loadFeed: function(link) {
 		feedReader.$.loading.show();
@@ -41,26 +41,11 @@ enyo.kind({
 			}, 500);
 		}
 		//if we got a list of feeds, display them
-		else if(list) {
+		if(list) {
 			for(var i = 0, il = list.length; i < il; i++) {
 				feedContent.addItem(list[i].fields);
 			}
 			feedContent.render();
-
-
-			var elements = this.hasNode() && this.hasNode().getElementsByTagName("a");
-
-
-			for(var i = 0, il = elements.length; i < il; i++) {
-				elements[i].addEventListener("click", function(e) {
-					e.preventDefault();
-					$fh.webview({
-						url: this.href
-					});
-					return false;
-				}, false);
-			}
-
 
 			feedReader.$.loading.hide();
 		}

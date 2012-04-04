@@ -6,40 +6,42 @@ enyo.kind({
 		{
 			classes: "title",
 			name: "title",
-			ontap: "toggleDescription"
+			ontap: "toggleContent"
 		},
 		{
-			name: "description",
+			name: "content",
 			allowHtml: true,
-			classes: "description"
+			classes: "content"
 		},
 		{
 			name: "author"
 		}
 	],
 	open: false,
-	constructor: function(author, title, description) {
+	constructor: function(author, title, content) {
 		this.author = author;
 		this.title = title;
-		this.description = description;
+		this.content = content;
 		this.inherited(arguments);
 	},
-	create: function(author, title, description) {
+	create: function() {
 		this.inherited(arguments);
 
-		this.$.title.setContent(this.title);
-		this.$.description.setContent(this.description);
-		//this.$.author.setContent(this.author);
+		var title = this.$.title,
+			content = this.$.content;
+
+		title.setContent(this.title);
+		content.setContent(this.content);
 
 	},
-	toggleDescription: function() {
+	toggleContent: function() {
 		this.open = !this.open;
 
 		if(this.open) {
-			this.$.description.addClass("open");
+			this.$.content.addClass("open");
 		}
 		else {
-			this.$.description.removeClass("open");
+			this.$.content.removeClass("open");
 		}
 	},
 	setActive: function() {
