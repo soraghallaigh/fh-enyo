@@ -47,6 +47,25 @@ enyo.kind({
 			}
 			feedContent.render();
 
+			//to open links within the feed content within a webview
+
+			if(this.hasNode()) {
+				var links = this.hasNode().getElementsByTagName("a");
+
+				for(var i = 0, il = links.length; i < il; i++) {
+					links[i].addEventListener("click", function(e) {
+						e.preventDefault();
+						$fh.webview({
+							url: this.href
+						});
+
+						return false;
+					}, false);
+				}
+			}
+
+
+
 			feedReader.$.loading.hide();
 		}
 		else if(res.status && res.status == "error") {

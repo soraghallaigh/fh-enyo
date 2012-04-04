@@ -107,6 +107,7 @@ img {
 	width: 100%;
 	left: auto;
 	z-index: 1000;
+	background-color: #D8D8D8;
 }
 .pullout .onyx-grabber {
 	position: absolute;

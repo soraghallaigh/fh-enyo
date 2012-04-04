@@ -5,16 +5,6 @@ enyo.kind({
 	id: "feed-reader",
 	classes: "onyx enyo-unselectable",
 	kind: enyo.Control,
-	create: function() {
-		this.inherited(arguments);
-
-		this.setActivePage(this.$.home);
-
-		//allow the page to stop loading before we get content
-		setTimeout(function() {
-			this.$.mainfeed.loadFeed("http://feedhenry.com/feed/");
-		}.bind(this), 1000);
-	},
 	components: 
 	[
 		{
@@ -54,7 +44,7 @@ enyo.kind({
 				{
 					tag: "img",
 					src: "img/enyo-logo.png",
-					style: "width: 30px; height: 30px; float: right"
+					style: "width: 80px; height: 26px; float: right"
 				}
 			]
 		},
@@ -127,6 +117,16 @@ enyo.kind({
 		}
 	],
 	activePage: null,
+	create: function() {
+		this.inherited(arguments);
+
+		this.setActivePage(this.$.home);
+
+		//allow the page to stop loading before we get content
+		setTimeout(function() {
+			this.$.mainfeed.loadFeed("http://feedhenry.com/feed/");
+		}.bind(this), 1000);
+	},
 	setActivePage: function(page) {
 		this.activePage && this.activePage.hide();
 		this.activePage = page.show();
