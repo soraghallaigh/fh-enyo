@@ -100,6 +100,12 @@ img {
 	height: auto;
 	padding: 5px;
 }
+.pullout {
+	height: 100%;
+	width: 100%;
+	left: auto;
+	z-index: 1000;
+}
 .pullout .onyx-grabber {
 	position: absolute;
 	height: 54px;

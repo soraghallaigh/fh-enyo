@@ -50,8 +50,12 @@ enyo.kind({
 				{
 					name: "pageTitle",
 					content: ""
+				},
+				{
+					tag: "img",
+					src: "img/enyo-logo.png",
+					style: "width: 30px; height: 30px; float: right"
 				}
-
 			]
 		},
 		{

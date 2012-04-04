@@ -1,7 +1,6 @@
 enyo.kind({
 	name: "FeedContent",
 	kind: "enyo.Scroller",
-	fit: true,
 	classes: "feed-content",
 	currentLink: "",
 	addItem: function(feedItem) {

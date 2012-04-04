@@ -11,8 +11,7 @@ enyo.kind({
 	value: 100, 
 	max: 100, 
 	unit: "%", 
-	classes: "enyo-fit pullout",
-	style: "width: 100%; left: auto; z-index: 1000", 
+	classes: "pullout",
 	defaultFeeds: [
 		"http://www.engadget.com/rss.xml",
 		"http://reddit.com/.rss",
