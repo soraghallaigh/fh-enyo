@@ -13,6 +13,7 @@ enyo.kind({
 	unit: "%", 
 	classes: "pullout",
 	defaultFeeds: [
+		"http://blog.enyojs.com/rss",
 		"http://www.engadget.com/rss.xml",
 		"http://reddit.com/.rss",
 		"http://feedhenry.com/feed/",

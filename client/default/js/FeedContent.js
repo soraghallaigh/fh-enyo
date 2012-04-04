@@ -10,7 +10,11 @@ enyo.kind({
 		feedReader.$.loading.show();
 
 		//remove the old list of feeds
-		this.destroyClientControls();
+		var old = this.getClientControls();
+		for(var i = 0, il = old.length; i < il; i++) {
+			this.removeControl(old[i]);
+			old[i].destroy();
+		}
 
 		this.currentLink = link;
 
@@ -48,7 +52,6 @@ enyo.kind({
 			feedContent.render();
 
 			//to open links within the feed content within a webview
-
 			if(this.hasNode()) {
 				var links = this.hasNode().getElementsByTagName("a");
 
@@ -63,8 +66,6 @@ enyo.kind({
 					}, false);
 				}
 			}
-
-
 
 			feedReader.$.loading.hide();
 		}
