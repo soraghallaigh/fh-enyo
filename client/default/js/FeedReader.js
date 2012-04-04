@@ -8,6 +8,8 @@ enyo.kind({
 	create: function() {
 		this.inherited(arguments);
 
+		this.setActivePage(this.$.home);
+
 		//allow the page to stop loading before we get content
 		setTimeout(function() {
 			this.$.mainfeed.loadFeed("http://feedhenry.com/feed/");
@@ -72,7 +74,6 @@ enyo.kind({
 					kind: "AppPage",
 					name: "rss",
 					title: "Your Feeds",
-					active: false,
 					slideout: "right",
 					components: [
 						{
@@ -85,7 +86,7 @@ enyo.kind({
 							name: "content",
 							components: [
 								{
-									content: "drag tab to select a feed &rarr;",
+									content: "drag tab to add or select a feed &rarr;",
 									allowHtml: true,
 									classes: "instruction"
 								}
@@ -121,10 +122,13 @@ enyo.kind({
 			]
 		}
 	],
-	activePage: "",
-	changePage: function(sender) {
+	activePage: null,
+	setActivePage: function(page) {
 		this.activePage && this.activePage.hide();
-		this.activePage = this.$[sender.page].show();
-		this.$.pageTitle.setContent(this.activePage.title);
+		this.activePage = page.show();
+		this.$.pageTitle.setContent(page.title);
+	},
+	changePage: function(sender) {
+		this.setActivePage(this.$[sender.page]);
 	}
 });

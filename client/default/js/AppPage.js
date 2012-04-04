@@ -10,8 +10,8 @@ enyo.kind({
 	unit: "%",
 	draggable: false,
 	create: function() {
-		this.value = this.active ? this.getOffset() : 0;
 		this.inherited(arguments);
+		this.setValue(this.active ? 0 : 4 * this.getOffset());
 	},
 	show: function() {
 		this.animateTo(0);
