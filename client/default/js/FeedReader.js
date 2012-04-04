@@ -81,11 +81,6 @@ enyo.kind({
 					slideout: "right",
 					components: [
 						{
-							kind: "FeedList",
-							name: "list",
-							style: "z-index: 1000;"
-						},
-						{
 							kind: "FeedContent",
 							name: "content",
 							components: [
@@ -95,6 +90,11 @@ enyo.kind({
 									classes: "instruction"
 								}
 							],
+						},
+						{
+							kind: "FeedList",
+							name: "list",
+							style: "z-index: 1000;"
 						}
 					]
 				}
