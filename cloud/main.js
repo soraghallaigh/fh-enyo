@@ -19,7 +19,7 @@ exports.getFeed = function(params, cb) {
 				  msg: "Feed does not exist"
 			  });
 		  }
-      return cb(null, res);
+      return cb(null, res.body);
 		});
 	}
 }
