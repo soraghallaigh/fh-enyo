@@ -1,5 +1,5 @@
 
-exports.getFeed = function(params) {
+exports.getFeed = function(params, cb) {
   var res = {
   	msg: "Invalid parameters",
 		status: "error"
