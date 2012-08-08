@@ -13,7 +13,7 @@ exports.getFeed = function(params, cb) {
       if(err) {
         return cb(err);
       }
-  	  if(res.list && res.list.length === 0) {
+  	  if(res.body.list && res.body.list.length === 0) {
   		  return cb({
 				  status: "error",
 				  msg: "Feed does not exist"
