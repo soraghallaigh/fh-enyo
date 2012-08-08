@@ -20,7 +20,6 @@ exports.getFeed = function(params) {
 			  });
 		  }
       return cb(null, res);
-      
 		});
 	}
 }
