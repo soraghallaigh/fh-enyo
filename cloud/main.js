@@ -37,11 +37,12 @@ exports.getFeed = function(params) {
         return cb(err);
       }
   	  if(res.list && res.list.length === 0) {
-  		  cb(null, {
+  		  return cb({
 				  status: "error",
 				  msg: "Feed does not exist"
 			  });
 		  }
+      return cb(null, res);
       
 		});
 	}
